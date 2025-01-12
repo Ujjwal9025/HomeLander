@@ -52,6 +52,7 @@ export default function Search() {
       setLoading(true);
       setShowMore(false);
       const searchQuery = urlParams.toString();
+      console.log("searchQuery: ", searchQuery);
       const res = await fetch(`/api/listing/get?${searchQuery}`);
       const data = await res.json();
       if (data.length > 8) {
@@ -129,7 +130,7 @@ export default function Search() {
   };
   return (
     <div className='flex flex-col md:flex-row mt-20'>
-      <div className='p-10 border-b-2 md:border-r-2 md:min-h-screen'>
+      <div className='p-10 border-b-2 md:border-r-2 md:min-h-screen fixed'>
         <form onSubmit={handleSubmit} className='flex flex-col gap-8'>
           <div className='flex items-center gap-2'>
             <label className='whitespace-nowrap font-semibold'>
@@ -229,7 +230,7 @@ export default function Search() {
           </button>
         </form>
       </div>
-      <div className='flex-1'>
+      <div className='flex-1 ml-[450px]'>
         <h1 className='text-3xl font-semibold border-b p-3 text-slate-700 mt-5'>
           Listing results:
         </h1>

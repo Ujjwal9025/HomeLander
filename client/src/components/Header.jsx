@@ -15,6 +15,8 @@ export default function Header() {
     navigate(`/search?${searchQuery}`);
   };
 
+  console.log("user: ", currentUser);
+
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get('searchTerm');
@@ -22,6 +24,7 @@ export default function Header() {
       setSearchTerm(searchTermFromUrl);
     }
   }, [location.search]);
+  
   return (
     <header className='bg-slate-200 shadow-md fixed w-full z-50 top-0'>
       <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
